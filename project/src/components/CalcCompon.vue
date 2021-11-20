@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
       <div class="block">
-        <input type="number" v-model.number="oper1">
+        <input type="number" v-model.number="oper1" >
         <input type="number" v-model.number="oper2">={{res}}
       </div><br>
 
@@ -9,7 +9,7 @@
         <label for="checkbox">Отобразить клавиатуру</label>
 
       <div v-show="showNum">
-        <button class="btn-num" v-for="number of numbers" :key="number">{{number}}</button>
+        <button class="btn-num" v-for="number of numbers" :key="number" @focus="oper1">{{number}}</button>
       </div><br>
 
       <button class="btn-oper" v-for="operand of operands" :key="operand" @click="calc(operand)" :disabled="oper1 === '' || oper2 === '' ">{{operand}}</button><br>
