@@ -7,7 +7,7 @@
         <li><input placeholder="category" type="text" v-model="category"></li>
         <li><input placeholder="price" type="number" v-model.number="price"></li>
       </ul>
-      <button @click="save">ADD +</button>
+      <button @click="save" :disabled="category === '' || price === ''">ADD +</button>
     </div>
   </div>
 </template>
