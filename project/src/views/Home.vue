@@ -4,8 +4,7 @@
       <h1>My coast</h1>
     </header>
     <main>
-      <NewCoast />
-      <PaymentForm @add="updateList"/>
+      <PaymentForm @add="updateList" />
       <PaymentList :items="paymentList"/>
     </main>
   </div>
@@ -15,14 +14,12 @@
 // @ is an alias to /src
 import PaymentList from '@/components/PaymentList.vue';
 import PaymentForm from '@/components/PaymentForm.vue';
-import NewCoast from '@/components/NewCoast.vue';
 
 export default {
   name: 'Home',
   components: {
     PaymentList,
     PaymentForm,
-    NewCoast,
   },
   data() {
     return {
@@ -33,13 +30,11 @@ export default {
     fetchData() {
       return [
         {
-          id: 1,
           date: '20.11.21',
           category: 'Education',
           price: 123,
         },
         {
-          id: 2,
           date: '20.11.21',
           category: 'Education',
           price: 123,
