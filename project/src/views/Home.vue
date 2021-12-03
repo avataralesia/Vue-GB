@@ -1,18 +1,54 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <header>
+      <h1>My coast</h1>
+    </header>
+    <main>
+      <PaymentForm @add="updateList"
+       :categoryList="categoryList"
+       />
+      <PaymentList :items="paymentList"/>
+    </main>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import { mapActions, mapGetters, mapMutations } from 'vuex';
+import PaymentList from '@/components/PaymentList.vue';
+import PaymentForm from '@/components/PaymentForm.vue';
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld,
+    PaymentList,
+    PaymentForm,
+  },
+  methods: {
+    updateList(payment) {
+      this.ADD_PAYMENT_DATA(payment);
+    },
+    ...mapActions([
+      'fetchData',
+      'fetchCategoryList',
+    ]),
+    ...mapMutations([
+      'ADD_PAYMENT_DATA',
+    ]),
+  },
+  computed: {
+    ...mapGetters([
+      'paymentList',
+      'categoryList',
+    ]),
+  },
+  created() {
+    this.fetchData();
+    this.fetchCategoryList();
+    //  this.$store.dispatch('fetchData');
+  },
+  destroyed() {
+
   },
 };
 </script>
