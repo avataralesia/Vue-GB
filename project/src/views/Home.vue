@@ -1,18 +1,54 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <header>
+      <h1>My coast</h1>
+    </header>
+    <main>
+      <PaymentForm @add="updateList" />
+      <PaymentList :items="paymentList"/>
+    </main>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import PaymentList from '@/components/PaymentList.vue';
+import PaymentForm from '@/components/PaymentForm.vue';
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld,
+    PaymentList,
+    PaymentForm,
+  },
+  data() {
+    return {
+      paymentList: [],
+    };
+  },
+  methods: {
+    fetchData() {
+      return [
+        {
+          date: '20.11.21',
+          category: 'Education',
+          price: 123,
+        },
+        {
+          date: '20.11.21',
+          category: 'Education',
+          price: 123,
+        },
+      ];
+    },
+    updateList(data) {
+      this.paymentList.push(data);
+    },
+  },
+  created() {
+    this.paymentList = this.fetchData();
+  },
+  destroyed() {
   },
 };
 </script>
