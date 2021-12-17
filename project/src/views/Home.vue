@@ -49,7 +49,6 @@ export default {
     this.paymentList = this.fetchData();
   },
   destroyed() {
-
   },
 };
 </script>

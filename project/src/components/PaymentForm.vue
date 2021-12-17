@@ -2,11 +2,14 @@
   <div>
     <button @click="clicked=!clicked">Add New Coast +</button>
     <div class="form" v-show="clicked">
-      <ul>
-        <li><input placeholder="date" type="text" v-model="date"></li>
-        <li><input placeholder="category" type="text" v-model="category"></li>
-        <li><input placeholder="price" type="number" v-model.number="price"></li>
-      </ul>
+      <input placeholder="date" type="text" v-model="date">
+      <select name="" id="" v-model="category">
+        <option value="category" v-for="category of categoryList"
+         :key="category">
+         {{category}}
+        </option>
+      </select>
+      <input placeholder="price" type="number" v-model.number="price">
       <button @click="save" :disabled="category === '' || price === ''">ADD +</button>
     </div>
   </div>
@@ -20,6 +23,7 @@ export default {
       category: '',
       price: '',
       clicked: false,
+      categoryList: ['Foods', 'Education', 'Sport', 'Transport'],
     };
   },
   methods: {
